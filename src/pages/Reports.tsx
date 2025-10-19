@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/select";
 import { useAbsences } from "@/hooks/useAbsences";
 import { useEmployees } from "@/hooks/useEmployees";
-import { format, startOfMonth, endOfMonth } from "date-fns";
+import { format, endOfMonth } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import { Printer } from "lucide-react";
 
@@ -23,13 +23,14 @@ export default function Reports() {
   const [selectedMonth, setSelectedMonth] = useState(format(new Date(), "yyyy-MM"));
   const [selectedEmployee, setSelectedEmployee] = useState<string>("all");
 
-  const monthDate = new Date(selectedMonth + "-01");
-  const monthStart = startOfMonth(monthDate);
-  const monthEnd = endOfMonth(monthDate);
+  const [year, month] = selectedMonth.split("-").map(Number);
+  const monthDate = new Date(year, month - 1, 1);
+  const monthStart = new Date(year, month - 1, 1);
+  const monthEnd = endOfMonth(monthStart);
 
   const filteredAbsences = absences.filter((absence) => {
-    // Parse date correctly - input date is in YYYY-MM-DD format
-    const absenceDate = new Date(absence.date + 'T00:00:00');
+    const [ay, am, ad] = absence.date.split("-").map(Number);
+    const absenceDate = new Date(ay, am - 1, ad);
     const isInMonth = absenceDate >= monthStart && absenceDate <= monthEnd;
     const matchesEmployee = selectedEmployee === "all" || absence.employeeId === selectedEmployee;
     return isInMonth && matchesEmployee;
@@ -152,7 +153,7 @@ export default function Reports() {
                       <td className="border border-border p-2 text-foreground">{absence.employeeName}</td>
                       <td className="border border-border p-2 text-foreground">{absence.sector}</td>
                       <td className="border border-border p-2 text-foreground">
-                        {format(new Date(absence.date), "dd/MM/yyyy")}
+                        {format(new Date(Number(absence.date.substring(0,4)), Number(absence.date.substring(5,7)) - 1, Number(absence.date.substring(8,10))), "dd/MM/yyyy")}
                       </td>
                       <td className="border border-border p-2 text-foreground">{absence.reason}</td>
                       <td className="border border-border p-2">
