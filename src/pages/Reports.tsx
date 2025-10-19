@@ -28,7 +28,8 @@ export default function Reports() {
   const monthEnd = endOfMonth(monthDate);
 
   const filteredAbsences = absences.filter((absence) => {
-    const absenceDate = new Date(absence.date);
+    // Parse date correctly - input date is in YYYY-MM-DD format
+    const absenceDate = new Date(absence.date + 'T00:00:00');
     const isInMonth = absenceDate >= monthStart && absenceDate <= monthEnd;
     const matchesEmployee = selectedEmployee === "all" || absence.employeeId === selectedEmployee;
     return isInMonth && matchesEmployee;
