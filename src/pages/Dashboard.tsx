@@ -56,7 +56,7 @@ export default function Dashboard() {
       <div>
         <h2 className="text-3xl font-bold text-foreground">Dashboard</h2>
         <p className="text-muted-foreground mt-1">
-          Controle de Faltas - {format(currentMonth, "MMMM 'de' yyyy", { locale: ptBR })}
+          Sistema de gerenciamento e acompanhamento de faltas dos colaboradores
         </p>
       </div>
 
