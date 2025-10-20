@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { Building2, Home, UserPlus, Users, FileText, BarChart3 } from "lucide-react";
+import { Building2, Home, UserPlus, Users, FileText } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navigation = [
@@ -7,7 +7,6 @@ const navigation = [
   { name: "Registrar Falta", href: "/absences", icon: UserPlus },
   { name: "Funcionários", href: "/employees", icon: Users },
   { name: "Relatórios", href: "/reports", icon: FileText },
-  { name: "Estatísticas", href: "/statistics", icon: BarChart3 },
 ];
 
 export default function Layout({ children }: { children: React.ReactNode }) {

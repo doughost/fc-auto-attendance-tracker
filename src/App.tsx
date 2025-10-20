@@ -8,7 +8,6 @@ import Dashboard from "./pages/Dashboard";
 import Absences from "./pages/Absences";
 import Employees from "./pages/Employees";
 import Reports from "./pages/Reports";
-import Statistics from "./pages/Statistics";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -25,7 +24,6 @@ const App = () => (
             <Route path="/absences" element={<Absences />} />
             <Route path="/employees" element={<Employees />} />
             <Route path="/reports" element={<Reports />} />
-            <Route path="/statistics" element={<Statistics />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Layout>
