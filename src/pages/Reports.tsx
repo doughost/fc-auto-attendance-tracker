@@ -32,7 +32,7 @@ export default function Reports() {
     const [ay, am, ad] = absence.date.split("-").map(Number);
     const absenceDate = new Date(ay, am - 1, ad);
     const isInMonth = absenceDate >= monthStart && absenceDate <= monthEnd;
-    const matchesEmployee = selectedEmployee === "all" || absence.employeeId === selectedEmployee;
+    const matchesEmployee = selectedEmployee === "all" || absence.employee_id === selectedEmployee;
     return isInMonth && matchesEmployee;
   });
 
@@ -150,7 +150,7 @@ export default function Reports() {
                 ) : (
                   filteredAbsences.map((absence) => (
                     <tr key={absence.id}>
-                      <td className="border border-border p-2 text-foreground">{absence.employeeName}</td>
+                      <td className="border border-border p-2 text-foreground">{absence.employee_name}</td>
                       <td className="border border-border p-2 text-foreground">{absence.sector}</td>
                       <td className="border border-border p-2 text-foreground">
                         {format(new Date(Number(absence.date.substring(0,4)), Number(absence.date.substring(5,7)) - 1, Number(absence.date.substring(8,10))), "dd/MM/yyyy")}

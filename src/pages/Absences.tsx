@@ -51,8 +51,8 @@ export default function Absences() {
     if (!employee) return;
 
     const absenceData = {
-      employeeId: employee.id,
-      employeeName: employee.name,
+      employee_id: employee.id,
+      employee_name: employee.name,
       sector: employee.sector,
       position: employee.position,
       date,
@@ -83,7 +83,7 @@ export default function Absences() {
     if (!absence) return;
 
     setEditingId(id);
-    setSelectedEmployee(absence.employeeId);
+    setSelectedEmployee(absence.employee_id);
     setDate(absence.date);
     setReason(absence.reason);
     setJustified(absence.justified ? "true" : "false");
@@ -222,7 +222,7 @@ export default function Absences() {
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
                         <p className="font-semibold text-foreground">
-                          {absence.employeeName}
+                          {absence.employee_name}
                         </p>
                         <p className="text-sm text-muted-foreground">
                           {absence.sector} - {absence.position}

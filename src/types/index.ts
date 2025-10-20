@@ -7,8 +7,8 @@ export interface Employee {
 
 export interface Absence {
   id: string;
-  employeeId: string;
-  employeeName: string;
+  employee_id: string;
+  employee_name: string;
   sector: string;
   position: string;
   date: string;

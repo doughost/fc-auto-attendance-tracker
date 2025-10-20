@@ -93,7 +93,7 @@ export default function Dashboard() {
                   className="flex items-center justify-between border-b border-border pb-3 last:border-0"
                 >
                   <div>
-                    <p className="font-medium text-foreground">{absence.employeeName}</p>
+                    <p className="font-medium text-foreground">{absence.employee_name}</p>
                     <p className="text-sm text-muted-foreground">
                       {absence.sector} - {format(new Date(absence.date), "dd/MM/yyyy")}
                     </p>

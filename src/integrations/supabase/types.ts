@@ -14,7 +14,95 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      absences: {
+        Row: {
+          created_at: string | null
+          date: string
+          employee_id: string
+          employee_name: string
+          id: string
+          justified: boolean | null
+          observations: string | null
+          position: string
+          reason: string
+          sector: string
+        }
+        Insert: {
+          created_at?: string | null
+          date: string
+          employee_id: string
+          employee_name: string
+          id?: string
+          justified?: boolean | null
+          observations?: string | null
+          position: string
+          reason: string
+          sector: string
+        }
+        Update: {
+          created_at?: string | null
+          date?: string
+          employee_id?: string
+          employee_name?: string
+          id?: string
+          justified?: boolean | null
+          observations?: string | null
+          position?: string
+          reason?: string
+          sector?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "absences_employee_id_fkey"
+            columns: ["employee_id"]
+            isOneToOne: false
+            referencedRelation: "employees"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      employees: {
+        Row: {
+          created_at: string | null
+          id: string
+          name: string
+          position: string
+          sector: string
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          name: string
+          position: string
+          sector: string
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          name?: string
+          position?: string
+          sector?: string
+        }
+        Relationships: []
+      }
+      sectors: {
+        Row: {
+          created_at: string | null
+          id: string
+          name: string
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          name: string
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          name?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
