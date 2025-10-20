@@ -228,7 +228,7 @@ export default function Absences() {
                           {absence.sector} - {absence.position}
                         </p>
                         <p className="text-sm text-muted-foreground mt-1">
-                          Data: {format(new Date(absence.date), "dd/MM/yyyy")}
+                          Data: {format(new Date(Number(absence.date.substring(0,4)), Number(absence.date.substring(5,7)) - 1, Number(absence.date.substring(8,10))), "dd/MM/yyyy")}
                         </p>
                         <p className="text-sm text-muted-foreground">
                           Motivo: {absence.reason}
